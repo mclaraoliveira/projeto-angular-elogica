@@ -1,0 +1,76 @@
+<div class="container mt-5">
+    <h1>Suas informações</h1>
+    <!-- Formulário -->
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()" novalidate>
+      <!-- Nome -->
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome completo</label>
+        <input type="text" class="form-control" id="nome" formControlName="nome"
+               [class.is-valid]="f['nome'].valid && (f['nome'].dirty || f['nome'].touched)"
+               [class.is-invalid]="f['nome'].invalid && (f['nome'].dirty || f['nome'].touched)">
+
+        @if (f['nome'].valid) {
+          <div class="valid-feedback">Nome válido!</div>
+        }
+        @if (f['nome'].errors?.['required']) {
+          <div class="invalid-feedback">O nome é obrigatório.</div>
+        }
+        @if (f['nome'].errors?.['minlength']) {
+          <div class="invalid-feedback">O nome deve ter pelo menos 3 caracteres.</div>
+        }
+      </div>
+
+      <!-- E-mail -->
+      <div class="mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="email" formControlName="email"
+               [class.is-valid]="f['email'].valid && (f['email'].dirty || f['email'].touched)"
+               [class.is-invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
+
+        @if (f['email'].valid) {
+          <div class="valid-feedback">E-mail válido!</div>
+        }
+        @if (f['email'].errors?.['required']) {
+          <div class="invalid-feedback">O e-mail é obrigatório.</div>
+        }
+        @if (f['email'].errors?.['email']) {
+          <div class="invalid-feedback">Por favor, insira um e-mail válido.</div>
+        }
+      </div>
+
+      <!-- Telefone -->
+      <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input type="tel" class="form-control" mask="(00) 0 0000 0000" id="telefone" formControlName="telefone"
+               [class.is-valid]="f['telefone'].valid && (f['telefone'].dirty || f['telefone'].touched)"
+               [class.is-invalid]="f['telefone'].invalid && (f['telefone'].dirty || f['telefone'].touched)">
+
+        @if (f['telefone'].valid) {
+          <div class="valid-feedback">Telefone válido!</div>
+        }
+        @if (f['telefone'].errors?.['required']) {
+          <div class="invalid-feedback">O telefone é obrigatório.</div>
+        }
+        @if (f['telefone'].errors?.['pattern']) {
+          <div class="invalid-feedback">Insira um telefone válido (11 dígitos).</div>
+        }
+      </div>
+
+      <!-- Data de nascimento -->
+      <div class="mb-3">
+        <label for="dataNascimento" class="form-label">Data de nascimento</label>
+        <input type="date" class="form-control" id="dataNascimento" formControlName="dataNascimento"
+               [class.is-valid]="f['dataNascimento'].valid && (f['dataNascimento'].dirty || f['dataNascimento'].touched)"
+               [class.is-invalid]="f['dataNascimento'].invalid && (f['dataNascimento'].dirty || f['dataNascimento'].touched)">
+
+        @if (f['dataNascimento'].valid) {
+          <div class="valid-feedback">Data válida!</div>
+        }
+        @if (f['dataNascimento'].errors?.['required']) {
+          <div class="invalid-feedback">A data de nascimento é obrigatória.</div>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">Next</button>
+    </form>
+  </div>
