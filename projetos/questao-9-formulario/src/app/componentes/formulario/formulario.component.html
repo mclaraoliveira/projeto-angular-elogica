@@ -1,0 +1,122 @@
+<div class="fundo">
+  <div class="container-form container">
+    <div class="row h-100">
+      <div class="lua col-md-6"></div>
+      <div class="col-md-6 formulario">
+        <h2>INSCRIÇÃO</h2>
+        <!-- Formulário -->
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()" novalidate>
+          <div class="mb-3 row">
+            <!-- Nome -->
+            <div class="col-md-6">
+              <label for="nome" class="form-label">Nome</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                formControlName="nome"
+                [class.is-valid]="f['nome'].valid && (f['nome'].dirty || f['nome'].touched)"
+                [class.is-invalid]="f['nome'].invalid && (f['nome'].dirty || f['nome'].touched)"
+              />
+              @if (f['nome'].valid) {
+                <div class="valid-feedback">Nome válido!</div>
+              }
+              @if (f['nome'].errors?.['required']) {
+                <div class="invalid-feedback">O nome é obrigatório.</div>
+              }
+              @if (f['nome'].errors?.['minlength']) {
+                <div class="invalid-feedback">O nome deve ter pelo menos 3 caracteres.</div>
+              }
+            </div>
+
+            <!-- E-mail -->
+            <div class="col-md-6">
+              <label for="email" class="form-label">E-mail</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                [class.is-valid]="f['email'].valid && (f['email'].dirty || f['email'].touched)"
+                [class.is-invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched)"
+              />
+              @if (f['email'].valid) {
+                <div class="valid-feedback">E-mail válido!</div>
+              }
+              @if (f['email'].errors?.['required']) {
+                <div class="invalid-feedback">O e-mail é obrigatório.</div>
+              }
+              @if (f['email'].errors?.['email']) {
+                <div class="invalid-feedback">Por favor, insira um e-mail válido.</div>
+              }
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <!-- Estado -->
+            <div class="col-md-6">
+              <label for="estado" class="form-label">Estado</label>
+              <select
+                class="form-select"
+                id="estado"
+                formControlName="estado"
+                (change)="onEstadoChange()"
+                [class.is-valid]="f['estado'].valid && (f['estado'].dirty || f['estado'].touched)"
+                [class.is-invalid]="f['estado'].invalid && (f['estado'].dirty || f['estado'].touched)"
+              >
+                <option value="" disabled selected>Selecione um estado</option>
+                <ng-container *ngFor="let estado of estados">
+                  <option [value]="estado">{{ estado }}</option>
+                </ng-container>
+              </select>
+
+              @if (f['estado'].invalid && (f['estado'].dirty || f['estado'].touched)) {
+                <div class="invalid-feedback">O estado é obrigatório.</div>
+              }
+            </div>
+
+            <!-- Cidade -->
+            <div class="col-md-6">
+              <label for="cidade" class="form-label">Cidade</label>
+              <select
+                class="form-select"
+                id="cidade"
+                formControlName="cidade"
+                [class.is-valid]="f['cidade'].valid && (f['cidade'].dirty || f['cidade'].touched)"
+                [class.is-invalid]="f['cidade'].invalid && (f['cidade'].dirty || f['cidade'].touched)"
+              >
+                <option value="" disabled selected>Selecione uma cidade</option>
+                <ng-container *ngFor="let cidade of cidades">
+                  <option [value]="cidade">{{ cidade }}</option>
+                </ng-container>
+              </select>
+              
+              @if (f['cidade'].invalid && (f['cidade'].dirty || f['cidade'].touched)) {
+                <div class="invalid-feedback">A cidade é obrigatória.</div>
+              }
+            </div>
+          </div>
+
+          <!-- Instituição -->
+          <div class="mb-3">
+            <label for="instituicao" class="form-label">Instituição</label>
+            <input
+              type="text"
+              class="form-control"
+              id="instituicao"
+              formControlName="instituicao"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="formulario.invalid"
+          >
+            Continuar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
