@@ -1,0 +1,13 @@
+<div class="container mt-4">
+  <div class="mb-3">
+    <label for="usuarioId" class="form-label">Insira uma ID entre 1 e 5 para checar o status do usuário</label>
+    <input type="number" class="form-control" id="usuarioId" #usuarioIdInput>
+    <button class="btn btn-primary mt-2" (click)="verificarStatus(usuarioIdInput.value)">Verificar Status</button>
+  </div>
+
+  @if (usuarioAtivo !== null) {
+    <div class="alert" [class.alert-primary]="usuarioAtivo" [class.alert-danger]="!usuarioAtivo">
+      {{ usuarioAtivo ? 'Usuário está ativo!' : 'Usuário não está ativo!' }}
+    </div>
+  }
+</div>

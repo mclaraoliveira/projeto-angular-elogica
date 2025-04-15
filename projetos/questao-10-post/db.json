@@ -1,0 +1,29 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Maria Clara",
+      "ativo": true
+    },
+    {
+      "id": 2,
+      "nome": "João Pedro",
+      "ativo": false
+    },
+    {
+      "id": 3,
+      "nome": "Julia",
+      "ativo": true
+    },
+    {
+      "id": 4,
+      "nome": "Nara",
+      "ativo": true
+    },
+    {
+      "id": 5,
+      "nome": "Marcy",
+      "ativo": false
+    }
+  ]
+}
