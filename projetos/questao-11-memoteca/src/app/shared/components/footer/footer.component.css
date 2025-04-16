@@ -1,0 +1,18 @@
+.footer {
+  background: url('/assets/fundo-rodape.png') no-repeat center center/cover;
+  height: 112px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+.texto {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 150%;
+}
