@@ -1,0 +1,34 @@
+.header {
+  background: url('/assets/fundo-cabecalho.png') no-repeat center center/cover;
+  height: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.conteudo-header {
+  text-align: center;
+}
+
+.logo {
+  height: 118px;
+  margin-left: -220px;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.texto {
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: start;
+  color: #6BD1FF;
+  margin-bottom: 0;
+}
+
+.computador {
+  height: 424px;
+  margin-top: 70px;
+}
