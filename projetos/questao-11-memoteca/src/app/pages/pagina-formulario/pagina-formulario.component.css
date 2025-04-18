@@ -1,0 +1,130 @@
+.background-container {
+  background-image: url('/assets/background-completo.png');
+  background-size: cover;
+  background-color: #FFF;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 240vh;
+  z-index: 1;
+}
+
+
+.formulario {
+  position: relative;
+  z-index: 2;
+  background-color: #C4EDFF;
+  border: none;
+  border-radius: 15px;
+  padding: 60px 100px;
+  height: 900px;
+  width: 1180px;
+}
+
+textarea::placeholder {
+  color: #6C757D;
+}
+
+input::placeholder {
+  color: #6C757D;
+}
+
+h2 {
+  font-family: 'Inter';
+  font-size: 48px;
+  color: #154580;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+.form-check {
+  margin-right: 230px;
+}
+
+h3 {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+}
+
+.area-cards {
+  margin-bottom: 110px;
+}
+
+.card-previa {
+  width: 316px;
+  height: 214px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card-azul-escuro {
+  box-shadow: 8px 8px 3px rgba(1, 1, 105, 0.74);
+}
+
+.card-azul-claro {
+  box-shadow: 8px 8px 3px rgba(9, 184, 190, 0.74);
+}
+
+.card-verde {
+  box-shadow: 8px 8px 3px rgba(4, 94, 1, 0.74);
+}
+
+.form-label {
+  font-family: 'Inter';
+  color: #154580;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+
+}
+
+.texto-card {
+  color: #6C757D;
+}
+
+.autor-card {
+  font-family: 'Inter';
+  color:#154580;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0%;
+
+}
+
+.botao {
+  background-color: #154580;
+  color: white;
+  width: 272px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.botao:hover {
+  background-color: #6BD1FF;
+  cursor: pointer;
+}
