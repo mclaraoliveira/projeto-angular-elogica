@@ -24,8 +24,8 @@ export class PaginaFormularioComponent {
     private pensamentoService: PensamentoService
   ) {
     // Verifica se tem um pensamento no estado da rota pra editar
-    const navigation = this.router.getCurrentNavigation();
-    this.pensamentoParaEditar = navigation?.extras.state?.['pensamento'];
+    const navegacaoAtual = this.router.getCurrentNavigation();
+    this.pensamentoParaEditar = navegacaoAtual?.extras.state?.['pensamento'];
     this.estaEditando = !!this.pensamentoParaEditar;
 
     this.formulario = this.fb.group({
