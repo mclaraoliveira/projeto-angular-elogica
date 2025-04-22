@@ -66,7 +66,6 @@ export class PaginaFormularioComponent {
   // Cancela a operação
   cancelar() {
     this.limparCampos();
-    this.voltarParaMural();
   }
 
   // Volta pra a página do mural
