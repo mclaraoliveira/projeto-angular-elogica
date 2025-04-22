@@ -11,6 +11,11 @@ import Swal from 'sweetalert2';
 export class PaginaMuralComponent implements OnInit {
   listaPensamentos: Pensamento[] = [];
 
+  // Paginação
+  paginaAtual: number = 1;
+  itensPorPagina: number = 9;
+  totalPensamentos: number = 0;
+
   constructor(
     private service: PensamentoService,
     private router: Router
@@ -23,15 +28,35 @@ export class PaginaMuralComponent implements OnInit {
   carregarPensamentos() {
     this.service.listar().subscribe((pensamentos) => {
       this.listaPensamentos = pensamentos;
+      this.totalPensamentos = pensamentos.length;
     });
+  }
+
+  // Getter pra calcular o total de páginas
+  get totalPaginas(): number {
+    return Math.ceil(this.totalPensamentos / this.itensPorPagina);
+  }
+
+  // Getter pra pegar pensamentos da página atual
+  get pensamentosPaginaAtual(): Pensamento[] {
+    const inicio = (this.paginaAtual - 1) * this.itensPorPagina;
+    const fim = inicio + this.itensPorPagina;
+    return this.listaPensamentos.slice(inicio, fim);
+  }
+
+  // Método pra mudar de página
+  mudarPagina(pagina: number) {
+    if (pagina >= 1 && pagina <= this.totalPaginas) {
+      this.paginaAtual = pagina;
+      window.scrollTo(0, 0); // Rolagem
+    }
   }
 
   navegarParaFormulario() {
     this.router.navigate(['/formulario']);
   }
 
-  // Mudança de cor da card dependendo do modelo escolhido
-
+  // Pra mudar a cor da sombra do card de acordo com o modelo
   buscarClasseCard(modelo: number): string {
     switch(modelo) {
       case 1: return 'card-azul-escuro';
@@ -41,7 +66,7 @@ export class PaginaMuralComponent implements OnInit {
     }
   }
 
-// Mudança de cor das aspas dependendo do modelo escolhido
+  // Pra mudar a cor das aspas de acordo com o modelo
   buscarClasseAspas(modelo: number): string {
     switch(modelo) {
       case 1: return 'aspas-azul-escuro';
@@ -51,8 +76,7 @@ export class PaginaMuralComponent implements OnInit {
     }
   }
 
-  // Modal do Sweet Alert
-
+  // Modal com Sweet Alert
   confirmarDeletar(pensamento: Pensamento) {
     Swal.fire({
       title: "Tem certeza?",
@@ -90,21 +114,12 @@ export class PaginaMuralComponent implements OnInit {
           );
         }
       });
-    } else {
-      console.error('ID do pensamento é undefined.');
-      Swal.fire(
-        'Erro!',
-        'O ID do pensamento é inválido.',
-        'error'
-      );
     }
   }
 
   editarPensamento(pensamento: Pensamento) {
-    // Navega para o formulário passando o pensamento como estado
     this.router.navigate(['/formulario'], {
       state: { pensamento: pensamento }
     });
   }
-
 }

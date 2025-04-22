@@ -6,9 +6,10 @@
       Adicionar Pensamento
     </button>
   </div>
-  <!-- Cards -->
-  <div class="row area-cards justify-content-center ">
-    @for (pensamento of listaPensamentos; track pensamento.id) {
+
+  <!-- Cards com Paginação -->
+  <div class="row area-cards justify-content-center">
+    @for (pensamento of pensamentosPaginaAtual; track pensamento.id) {
     <div class="col-md-6 col-lg-4 mb-5 card-individual">
       <div class="card card-display" [class]="buscarClasseCard(pensamento.modelo)">
         <div class="card-body">
@@ -17,19 +18,11 @@
             {{ pensamento.pensamento }}
           </p>
 
-          <div
-            class="autor-icons d-flex justify-content-between align-items-center"
-          >
+          <div class="autor-icons d-flex justify-content-between align-items-center">
             <p class="autor-card mb-0">{{ pensamento.autor }}</p>
             <div class="icons">
-              <i
-                class="fa-solid fa-pen-to-square me-2"
-                (click)="editarPensamento(pensamento)"
-              ></i>
-              <i
-                class="fa-regular fa-trash-can"
-                (click)="confirmarDeletar(pensamento)"
-              ></i>
+              <i class="fa-solid fa-pen-to-square me-2" (click)="editarPensamento(pensamento)"></i>
+              <i class="fa-regular fa-trash-can" (click)="confirmarDeletar(pensamento)"></i>
             </div>
           </div>
         </div>
@@ -41,4 +34,31 @@
     </div>
     }
   </div>
+
+  <!-- Paginação -->
+  @if (totalPaginas > 1) {
+  <div class="d-flex justify-content-center mt-4 mb-5">
+    <nav aria-label="Navegação de páginas">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="paginaAtual === 1">
+          <a class="page-link" (click)="mudarPagina(paginaAtual - 1)" aria-label="Anterior">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+
+        @for (pagina of [].constructor(totalPaginas); track $index) {
+          <li class="page-item" [class.active]="paginaAtual === $index + 1">
+            <a class="page-link" (click)="mudarPagina($index + 1)">{{ $index + 1 }}</a>
+          </li>
+        }
+
+        <li class="page-item" [class.disabled]="paginaAtual === totalPaginas">
+          <a class="page-link" (click)="mudarPagina(paginaAtual + 1)" aria-label="Próximo">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  }
 </div>
